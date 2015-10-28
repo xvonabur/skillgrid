@@ -59,8 +59,6 @@ group :development, :test do
   gem 'rspec-rails'
   # Bootstap rspec a little bit
   gem 'spring-commands-rspec'
-  gem 'guard-rspec'
-
   group :darwin do
     gem 'rb-fsevent', :require => false
   end
@@ -75,9 +73,7 @@ group :test do
   # Factory for tests
   gem 'factory_girl_rails'
   gem 'database_cleaner'
-
   gem 'rspec-collection_matchers'
-
 end
 
 group :production do

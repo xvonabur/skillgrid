@@ -1,0 +1,25 @@
+$red:        #dd4b39;  //Danger
+$green:      #00a65a;  //Success
+$aqua:       #00c0ef;  //Info
+$yellow:     #f39c12;  //Warning
+
+.alert {
+  color: white;
+}
+.alert-success {
+  background-color: $green;
+  border-color: darken($green, 5%);
+}
+.alert-danger,
+.alert-error {
+  background-color: $red;
+  border-color: darken($red, 5%);
+}
+.alert-warning {
+  background-color: $yellow;
+  border-color: darken($yellow, 5%);
+}
+.alert-info {
+  background-color: $aqua;
+  border-color: darken($aqua, 5%);
+}

@@ -1,4 +1,4 @@
-<%= bootstrap_devise_error_messages! %>
+<%= devise_error_messages! %>
 <div class="panel panel-default">
   <div class="panel-heading">
     <h4><%= t('.sign_up', default: 'Sign up') %></h4>
@@ -22,7 +22,8 @@
         <%= f.label :password_confirmation %>
         <%= f.password_field :password_confirmation, class: 'form-control' %>
       </div>
-      <%= f.submit t('.sign_up', default: 'Sign up'), class: 'btn btn-primary', id: 'sign_up_submit_btn' %>
+      <%= f.submit t('.sign_up', default: 'Sign up'), class: 'btn btn-primary',
+                                                      id: 'sign_up_submit_btn' %>
     <% end %>
   </div>
 </div>

@@ -8,7 +8,7 @@ RSpec.feature 'User logs in and logs out', type: :feature do
     expect(page).to have_content('Войти')
   end
 
-  scenario 'logs in with correct details', js: true do
+  scenario 'logs in with correct details' do
     user = create(:user, email: 'someone@example.com')
     visit new_user_session_path
 
@@ -24,10 +24,10 @@ RSpec.feature 'User logs in and logs out', type: :feature do
     visit new_user_session_path
 
     login user.email, user.password
-    click_on 'user-dropdown-menu'
-    click_on 'btn-user-logout'
+    find('#user-dropdown-menu').click
+    find('#user-logout-link').click
 
-    expect(current_path).to eq new_user_session_path
+    expect(current_path).to eq products_path
     expect(page).to have_content 'Выход из системы выполнен'
     expect(page).not_to have_content 'someone@example.com'
   end

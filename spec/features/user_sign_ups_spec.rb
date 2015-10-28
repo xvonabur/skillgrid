@@ -1,14 +1,16 @@
 require 'rails_helper'
 
 RSpec.feature 'User sign ups', type: :feature do
-  before { visit new_user_registration_path }
+  before do
+    visit '/'
+    find('#user-sign-up-link').click
+  end
 
   scenario 'with correct details' do
     fill_in_user_data
 
     expect { click_button 'sign_up_submit_btn' }.to change { User.count }.by(1)
   end
-
 
   context 'with invalid details using' do
 
@@ -88,6 +90,5 @@ RSpec.feature 'User sign ups', type: :feature do
     fill_in 'user_email', with: email
     fill_in 'user_password', with: passwd
     fill_in 'user_password_confirmation', with: passwd_confirm
-
   end
 end

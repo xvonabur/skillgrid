@@ -17,8 +17,9 @@
           <%= link_to 'Продукты', products_path %>
         </li>
       </ul>
-      <% if !!current_user %>
+
         <ul class="nav navbar-nav navbar-right">
+          <% if !!current_user %>
           <li class="dropdown" id="user-dropdown-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                aria-haspopup="true" aria-expanded="false">
@@ -31,8 +32,16 @@
               </li>
             </ul>
           </li>
+          <% else %>
+            <li class="<%= 'active' if current_page?(new_user_registration_path) %>">
+              <%= link_to 'Регистрация', new_user_registration_path, id: 'user-sign-up-link' %>
+            </li>
+            <li class="<%= 'active' if current_page?(new_user_session_path) %>">
+              <%= link_to 'Вход', new_user_session_path, id: 'user-sign-in-link' %>
+            </li>
+          <% end %>
         </ul>
-      <% end %>
+
     </div><!--/.nav-collapse -->
   </div>
 </nav>

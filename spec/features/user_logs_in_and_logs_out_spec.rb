@@ -1,16 +1,17 @@
 require 'rails_helper'
 
 RSpec.feature 'User logs in and logs out', type: :feature do
+  before do
+    visit '/'
+    find('#user-sign-in-link').click
+  end
 
   scenario 'and sees a log in form at start' do
-    visit new_user_session_path
-
     expect(page).to have_content('Войти')
   end
 
   scenario 'logs in with correct details' do
     user = create(:user, email: 'someone@example.com')
-    visit new_user_session_path
 
     login user.email, user.password
 
@@ -21,7 +22,6 @@ RSpec.feature 'User logs in and logs out', type: :feature do
 
   scenario 'logs out', js: true do
     user = create(:user, email: 'someone@example.com')
-    visit new_user_session_path
 
     login user.email, user.password
     find('#user-dropdown-menu').click
@@ -35,8 +35,6 @@ RSpec.feature 'User logs in and logs out', type: :feature do
   scenario 'locks account after 3 failed attempts' do
     email = 'someone@example.com'
     create(:user, email: email)
-
-    visit new_user_session_path
 
     login email, '1st-try-wrong-password'
     expect(page).to have_content 'Неверные email или пароль'

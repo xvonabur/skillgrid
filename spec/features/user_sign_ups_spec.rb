@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'User sign ups' do
+RSpec.feature 'User sign ups', type: :feature do
   before { visit new_user_registration_path }
 
   scenario 'with correct details' do
@@ -22,21 +22,57 @@ feature 'User sign ups' do
     end
 
     scenario 'blank fields on submit' do
+      click_button 'sign_up_submit_btn'
+
+      expect { click_button 'sign_up_submit_btn' }.not_to change { User.count }
+      expect(page).to have_content('Email не может быть пустым', count: 1)
+      expect(page).to have_content('Пароль не может быть пустым', count: 1)
+      expect(page).to have_content('Имя не может быть пустым', count: 1)
     end
 
     scenario 'blank name' do
+      fill_in_user_data(name: '')
+
+      expect { click_button 'sign_up_submit_btn' }.not_to change { User.count }
+      expect(page).to have_content('Имя не может быть пустым', count: 1)
     end
 
     scenario 'incorrect password confirmation' do
+      fill_in_user_data(passwd: 'password1234',
+                        passwd_confirm: 'not-matched-password')
+
+      expect { click_button 'sign_up_submit_btn' }.not_to change { User.count }
+      expect(page).to have_content(
+                          'Подтверждение пароля не совпадает со значением поля Пароль', count: 1
+                      )
     end
 
     scenario 'already registered email' do
+      create(:user, email: 'name@mail.com')
+
+      fill_in_user_data(email: 'name@mail.com')
+
+      expect { click_button 'sign_up_submit_btn' }.not_to change { User.count }
+      expect(page).to have_content('Email уже существует', count: 1)
     end
 
     scenario 'invalid email' do
+      fill_in_user_data(email: 'invalid-email-for-testing')
+
+      expect { click_button 'sign_up_submit_btn' }.not_to change { User.count }
+      expect(page).to have_content('Email имеет неверное значение', count: 1)
     end
 
     scenario 'too short password' do
+      min_password_length = 8
+      too_short_password = 'p' * (min_password_length - 1)
+      fill_in_user_data(passwd: too_short_password,
+                        passwd_confirm: too_short_password)
+
+      expect { click_button 'sign_up_submit_btn' }.not_to change { User.count }
+      expect(page).to have_content(
+                          'Пароль недостаточной длины (не может быть меньше 8 символов)', count: 1
+                      )
     end
 
   end

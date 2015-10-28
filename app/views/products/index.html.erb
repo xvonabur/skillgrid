@@ -1,0 +1,7 @@
+<% unless flash.empty? %>
+  <div class="row">
+    <div class="col-xs-12">
+      <%= render partial: 'layouts/flash_messages', flash: flash %>
+    </div>
+  </div>
+<% end %>

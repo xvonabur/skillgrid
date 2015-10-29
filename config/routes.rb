@@ -1,7 +1,20 @@
 Rails.application.routes.draw do
-  devise_for :users
-
   resources :products, only: [:index, :show]
 
-  root to: redirect('/products')
+  namespace :admin do
+    resources :products
+  end
+
+
+
+  devise_scope :user do
+    authenticated :user do
+      root to: redirect('/admin/products'), as: 'authenticated'
+    end
+    unauthenticated :user do
+      root to: redirect('/products'), as: 'unauthenticated'
+    end
+  end
+
+  devise_for :users
 end

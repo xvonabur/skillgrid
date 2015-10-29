@@ -22,8 +22,14 @@
           </div>
         </div>
       <% end %>
-      <%= yield %>
-    </div>
+      <div class="row row-offcanvas row-offcanvas-left">
+        <%= render partial: 'layouts/sidebar' %>
+        <!-- main area -->
+        <div class="col-xs-12 col-sm-9">
+          <%= yield %>
+        </div><!-- /.col-xs-12 main -->
+      </div><!--/.row-->
+    </div><!--/.container-->
     <%= render partial: 'layouts/footer' %>
   </body>
 </html>

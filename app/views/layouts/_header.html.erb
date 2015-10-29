@@ -9,15 +9,9 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="<%= products_path %>">Part 1</a>
+      <a class="navbar-brand" href="<%= products_path %>">➚#</a>
     </div>
     <div id="navbar" class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <li class="<%= 'active' if current_page?(products_path) %>">
-          <%= link_to 'Продукты', products_path %>
-        </li>
-      </ul>
-
         <ul class="nav navbar-nav navbar-right">
           <% if !!current_user %>
           <li class="dropdown" id="user-dropdown-menu">

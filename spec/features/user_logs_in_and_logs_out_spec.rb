@@ -10,7 +10,7 @@ RSpec.feature 'User logs in and logs out', type: :feature do
     expect(page).to have_content('Войти')
   end
 
-  scenario 'logs in with correct details', js: true, driver: :selenium do
+  scenario 'logs in with correct details' do
     user = create(:user, email: 'someone@example.com')
 
     login user.email, user.password

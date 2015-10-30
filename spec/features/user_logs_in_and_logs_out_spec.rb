@@ -45,11 +45,4 @@ RSpec.feature 'User logs in and logs out', type: :feature do
     login email, '3rd-try-wrong-password'
     expect(page).to have_content 'Ваша учётная запись заблокирована'
   end
-
-  private
-    def login(email, password)
-      fill_in 'user_email', with: email
-      fill_in 'user_password', with: password
-      click_button 'sign_in_submit_btn'
-    end
 end

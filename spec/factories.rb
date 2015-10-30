@@ -6,4 +6,9 @@ FactoryGirl.define do
     password                'foobar1234'
     password_confirmation   'foobar1234'
   end
+
+  factory :product do
+    sequence(:title)         { |n| "Super quality product# #{n}" }
+    sequence(:description)    { |n| "This is the description for product# #{n}" }
+  end
 end

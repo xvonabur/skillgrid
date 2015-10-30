@@ -9,3 +9,11 @@ ru:
         password_confirmation: "Подтверждение пароля"
         current_password: "Текущий пароль"
         remember_me: "Запомнить меня"
+      product:
+        title: "Заголовок"
+        description: "Описание"
+  helpers:
+    submit:
+      product:
+        create: "Создать"
+        update: "Сохранить"

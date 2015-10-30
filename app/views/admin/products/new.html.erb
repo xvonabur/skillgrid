@@ -1,0 +1,16 @@
+<h1 class="page-header">Новый продукт</h1>
+<div class="row">
+  <div class="col-xs-12">
+    <%= simple_form_for @product, url: { controller: 'admin/products' },
+                        html: { class: 'form-horizontal' },
+                        wrapper: :horizontal_form do |f| %>
+      <%= f.error_notification %>
+
+      <%= f.input :title, autofocus: true, class: 'form-control' %>
+      <%= f.input :description, class: 'form-control' %>
+
+      <%= f.submit class: 'btn btn-info pull-right',
+                   id: "#{ params[:action] }_product_submit"%>
+    <% end %>
+  </div>
+</div>

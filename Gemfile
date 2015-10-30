@@ -32,6 +32,9 @@ gem 'devise'
 gem 'devise-i18n'
 gem 'devise-bootstrap-views'
 
+# Simplify form
+gem 'simple_form'
+
 # Internalization
 gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'master'
 gem 'i18n-active_record',

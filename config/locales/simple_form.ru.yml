@@ -1,0 +1,28 @@
+ru:
+  simple_form:
+    "yes": 'да'
+    "no": 'нет'
+    required:
+      text: 'обязательное поле'
+      mark: '*'
+    error_notification:
+      default_message: "При заполнении формы возникли следующие проблемы:"
+    # Examples
+    # labels:
+    #   defaults:
+    #     password: 'Password'
+    #   user:
+    #     new:
+    #       email: 'E-mail to sign in.'
+    #     edit:
+    #       email: 'E-mail.'
+    # hints:
+    #   defaults:
+    #     username: 'User name to sign in.'
+    #     password: 'No special characters, please.'
+    # include_blanks:
+    #   defaults:
+    #     age: 'Rather not say'
+    # prompts:
+    #   defaults:
+    #     age: 'Select your age'

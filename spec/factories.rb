@@ -9,6 +9,11 @@ FactoryGirl.define do
 
   factory :product do
     sequence(:title)         { |n| "Super quality product# #{n}" }
-    sequence(:description)    { |n| "This is the description for product# #{n}" }
+    sequence(:description)   { |n| "This is the description for product# #{n}" }
+    photo
+  end
+
+  factory :photo do
+    image Dragonfly.app.generate(:plain, 300, 200, 'format' => 'jpeg')
   end
 end

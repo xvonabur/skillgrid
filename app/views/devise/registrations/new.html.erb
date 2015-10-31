@@ -8,11 +8,11 @@
       <%= devise_error_messages! %>
         <%= f.input :name,  autofocus: true,
                           class: 'form-control' %>
-        <%= f.input :email,
+        <%= f.input :email, required: true,
                           class: 'form-control' %>
-        <%= f.input :password,
+        <%= f.input :password,  required: true,
                           class: 'form-control' %>
-        <%= f.input :password_confirmation,
+        <%= f.input :password_confirmation,  required: true,
                           class: 'form-control' %>
         <%= f.submit t('.sign_up', default: 'Sign up'),
                      class: 'btn btn-primary',

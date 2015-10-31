@@ -16,28 +16,41 @@
                class="table table-striped table-bordered">
           <thead>
           <tr role="row">
-            <th>Дата добавления</th>
+            <th>Дата изменения</th>
+            <th>Фото</th>
             <th>Заголовок</th>
             <th>Описание</th>
-            <th>Удалить</th>
+            <th>Действия</th>
           </tr>
           </thead>
           <tbody>
           <% if @products.blank? %>
             <tr>
-              <td colspan="4">Нет данных</td>
+              <td colspan="5">Нет данных</td>
             </tr>
           <% else %>
             <% @products.each do |product| %>
               <tr>
-                <td><%= product.created_at %></td>
+                <td><%= I18n.l(product.updated_at, format: :long) %></td>
+                <td>
+                  <% if product.photo.present? && product.photo.image_stored? %>
+                    <%= image_tag product.photo.image.thumb('200x100').url %>
+                  <% end %>
+                </td>
                 <td><%= product.title %></td>
                 <td><%= product.description %></td>
                 <td>
-                  <%= link_to 'Удалить', { action: 'destroy',
-                                           id: product.id },
-                                         method: :delete,
-                                         id: "product_#{product.id}_del" %>
+                  <span>
+                    <%= link_to 'Редактировать',
+                                edit_admin_product_path(product.id),
+                                id: "product_#{product.id}_edit" %>
+                  </span>
+                  <span>
+                    <%= link_to 'Удалить', { action: 'destroy',
+                                             id: product.id },
+                                method: :delete,
+                                id: "product_#{product.id}_del" %>
+                  </span>
                 </td>
               </tr>
             <% end %>

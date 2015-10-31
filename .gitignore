@@ -21,3 +21,4 @@
 # Ignore RVM configs
 .ruby-gemset
 .ruby-version
+/public/system

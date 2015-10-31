@@ -41,6 +41,8 @@ gem 'i18n-active_record',
     :git => 'git://github.com/svenfuchs/i18n-active_record.git',
     :require => 'i18n/active_record'
 
+# File uploader
+gem 'dragonfly', '~> 1.0.12'
 
 group :development do
   # Open email in separate browser tab
@@ -81,5 +83,6 @@ end
 
 group :production do
   gem 'puma'
+  gem 'rack-cache', :require => 'rack/cache'
 end
 

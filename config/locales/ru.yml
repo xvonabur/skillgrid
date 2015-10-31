@@ -12,8 +12,16 @@ ru:
       product:
         title: "Заголовок"
         description: "Описание"
+      photo:
+        image: "Фото"
+        remove_image: "Удалить фото"
   helpers:
     submit:
       product:
         create: "Создать"
         update: "Сохранить"
+  date:
+    formats:
+      default: "%d.%m.%Y"
+      short: "%b %d"
+      long: "%B %d, %Y"

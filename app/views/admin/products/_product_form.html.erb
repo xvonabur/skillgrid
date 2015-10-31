@@ -1,0 +1,25 @@
+<%= simple_form_for [:admin, @product],
+                    html: { class: 'form-horizontal' },
+                    wrapper: :horizontal_form do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :title, autofocus: true, class: 'form-control' %>
+  <%= f.input :description, class: 'form-control' %>
+  <%= f.simple_fields_for :photo, @product.photo do |ph| %>
+    <% if @product.photo.persisted? && @product.photo.present? &&
+                                    @product.photo.image_stored? %>
+      <div class="col-xs-offset-3 col-xs-9">
+        <%= image_tag @product.photo.image.thumb('200x100').url %>
+      </div>
+      <%= ph.input :remove_image, as: :boolean,
+                   wrapper: :horizontal_file_input %>
+
+    <% else %>
+      <%= ph.input :image, as: :file,
+                   wrapper: :horizontal_file_input %>
+    <% end %>
+  <% end %>
+
+  <%= f.submit class: 'btn btn-info pull-right',
+               id: "#{ params[:action] }_product_submit"%>
+<% end %>

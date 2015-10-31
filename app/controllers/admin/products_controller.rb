@@ -7,6 +7,7 @@ class Admin::ProductsController < ApplicationController
 
   def new
     @product = Product.new
+    @product.build_photo
   end
 
   def create
@@ -16,7 +17,22 @@ class Admin::ProductsController < ApplicationController
       flash[:success] = 'Создан новый продукт'
       redirect_to admin_products_path
     else
+      @product.build_photo
       render 'new'
+    end
+  end
+
+  def edit
+    @product = Product.find(params[:id])
+  end
+
+  def update
+    @product = Product.find(params[:id])
+    if @product.update(product_params)
+      flash[:success] = 'Изменение продукта прошло успешно'
+      redirect_to admin_products_path
+    else
+      render 'edit'
     end
   end
 
@@ -31,6 +47,7 @@ class Admin::ProductsController < ApplicationController
 
   private
     def product_params
-      params.require(:product).permit(:title, :description)
+      params.require(:product).permit(:title, :description,
+                                      photo_attributes: [:image, :title])
     end
 end

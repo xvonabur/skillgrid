@@ -24,6 +24,7 @@ class Admin::ProductsController < ApplicationController
 
   def edit
     @product = Product.find(params[:id])
+    @product.build_photo if @product.photo.nil?
   end
 
   def update

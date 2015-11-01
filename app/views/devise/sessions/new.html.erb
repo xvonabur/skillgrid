@@ -1,25 +1,36 @@
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h4><%= t('.sign_in', default: 'Sign in') %></h4>
+<div class="login-box">
+  <div class="login-logo">
+    <a href="/"><b>Skill</b>grid</a>
   </div>
-  <div class="panel-body">
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+    <p class="login-box-msg"><%= t('.sign_in', default: 'Sign in') %></p>
     <%= simple_form_for(resource, as: resource_name,
-                                  url: session_path(resource_name)) do |f| %>
-
+                        url: session_path(resource_name)) do |f| %>
+      <%= f.error_notification %>
+      <%= devise_error_messages! %>
       <%= f.input :email,
                   class: 'form-control' %>
       <%= f.input :password,
                   class: 'form-control' %>
-      <% if devise_mapping.rememberable? %>
-        <div class="checkbox icheck">
-          <%= f.input :remember_me, as: :boolean %>
-        </div>
-      <% end %>
-      <%= f.submit  t('.sign_in', default: 'Sign in'),
-                    class: 'btn btn-primary',
-                    id: 'sign_in_submit_btn' %>
-      </div>
+      <div class="row">
+        <div class="col-xs-8">
+          <% if devise_mapping.rememberable? %>
+            <div class="checkbox icheck">
+              <%= f.input_field :remember_me, as: :boolean %> Запомнить меня
+            </div>
+          <% end %>
+        </div><!-- /.col -->
+        <div class="col-xs-4">
+          <%= f.submit  t('.sign_in', default: 'Sign in'),
+                        class: 'btn btn-primary btn-block btn-flat',
+                        id: 'sign_in_submit_btn' %>
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+      <%= render 'devise/shared/links' %>
     <% end %>
   </div>
-<%= render 'devise/shared/links' %>
 
+
+</div>
+  <!-- /.login-box-body -->

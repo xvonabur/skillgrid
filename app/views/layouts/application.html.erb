@@ -11,29 +11,19 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
    </head>
-  <body>
-    <%= render partial: 'layouts/header' %>
-    <!-- Begin page content -->
-    <div class="container">
-      <div class="row row-offcanvas row-offcanvas-left">
-        <% if current_user.blank? %>
-          <%= render partial: 'layouts/sidebar' %>
-        <% else %>
-          <%= render partial: 'layouts/admin/sidebar' %>
-        <% end %>
-        <!-- main area -->
-        <div class="col-xs-12 col-sm-9">
-          <% unless flash.empty? %>
-            <div class="row">
-              <div class="col-xs-12">
-                <%= render partial: 'layouts/flash_messages', flash: flash %>
-              </div>
-            </div>
-          <% end %>
-          <%= yield %>
-        </div><!-- /.col-xs-12 main -->
-      </div><!--/.row-->
-    </div><!--/.container-->
-    <%= render partial: 'layouts/footer' %>
-  </body>
+
+  <% if !!current_user %>
+    <body class="login-page skin-blue sidebar-mini">
+      <%= render layout: 'layouts/control_panel/page' do %>
+        <%= yield %>
+      <% end %>
+    </body>
+  <% else %>
+    <body class="skin-blue layout-top-nav">
+      <%= render layout: 'layouts/page' do %>
+        <%= yield %>
+      <% end %>
+    </body>
+  <% end %>
+
 </html>

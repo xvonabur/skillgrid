@@ -24,8 +24,9 @@ RSpec.feature 'User logs in and logs out', type: :feature do
     user = create(:user, email: 'someone@example.com')
 
     login user.email, user.password
-    find('#user-dropdown-menu').click
-    find('#user-logout-link').click
+    click_on 'user-dropdown-menu'
+    click_on 'btn-user-logout'
+
 
     expect(current_path).to eq products_path
     expect(page).to have_content 'Выход из системы выполнен'

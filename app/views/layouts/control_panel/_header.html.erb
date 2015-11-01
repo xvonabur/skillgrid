@@ -1,0 +1,60 @@
+<header class="main-header">
+  <!-- Logo -->
+  <a href="/" class="logo">
+    <!-- mini logo for sidebar mini 50x50 pixels -->
+    <span class="logo-mini"><b>➚#</b></span>
+    <!-- logo for regular state and mobile devices -->
+    <span class="logo-lg"><b>➚#</b>Skillgrid</span>
+  </a>
+  <!-- Header Navbar: style can be found in header.less -->
+  <nav class="navbar navbar-static-top" role="navigation">
+    <!-- Sidebar toggle button-->
+    <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </a>
+    <div class="navbar-custom-menu">
+      <ul class="nav navbar-nav">
+        <li class="dropdown user user-menu">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+             id="user-dropdown-menu">
+            <%= image_tag 'users/default_userpic.png',
+                          class: 'user-image',
+                          alt: 'User Image' %>
+            <span class="hidden-xs"><%= current_user.name %></span>
+          </a>
+          <ul class="dropdown-menu">
+            <!-- User image -->
+            <li class="user-header">
+              <%= image_tag 'users/default_userpic.png',
+                            class: 'img-circle',
+                            alt: 'User Image' %>
+              <p>
+                <%= current_user.name %>
+                <small>Зарегистрирован
+                  <%= I18n.localize(current_user.created_at, format: :long) %>
+                </small>
+              </p>
+            </li>
+            <!-- Menu Footer-->
+            <li class="user-footer">
+              <div class="pull-left">
+                <%= link_to 'Профиль', edit_user_registration_path(current_user),
+                            class: 'btn btn-default btn-flat',
+                            id: 'btn-user-profile' %>
+              </div>
+              <div class="pull-right">
+                <%= link_to 'Выйти', destroy_user_session_path,
+                            method: :delete,
+                            class: 'btn btn-default btn-flat',
+                            id: 'btn-user-logout'  %>
+              </div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>

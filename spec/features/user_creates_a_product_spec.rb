@@ -6,7 +6,9 @@ RSpec.feature 'User creates a product', type: :feature do
     visit new_user_session_path
 
     login user.email, user.password
-    find('#new_product').click
+    within('#sidebar-products-menu') do
+      find('#new_product').click
+    end
   end
 
   scenario 'and sees blank fields on load' do
@@ -24,7 +26,7 @@ RSpec.feature 'User creates a product', type: :feature do
       click_button 'new_product_submit'
     }.to change { Product.count }.by(1)
     expect(current_path).to eq(admin_products_path)
-    expect(page).to have_css("img[src*='lightsaber']")
+    expect(page).to have_css("a[href*='lightsaber']")
   end
 
   context 'with invalid details using' do

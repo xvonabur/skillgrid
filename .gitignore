@@ -22,3 +22,6 @@
 .ruby-gemset
 .ruby-version
 /public/system
+/vendor/assets/bower_components
+/vendor/assets/bower.json
+/vendor/assets/.bowerrc

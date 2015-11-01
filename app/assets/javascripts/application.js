@@ -10,8 +10,12 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require jquery
+//= require jquery2
+//= require jquery.turbolinks
 //= require jquery_ujs
-//= require bootstrap-sprockets
+//= require bootstrap-sass-official/assets/javascripts/bootstrap-sprockets
+//= require fastclick/lib/fastclick.js
+//= require admin-lte/dist/js/app.js
+//= require iCheck/icheck.min.js
 //= require turbolinks
 //= require_tree .

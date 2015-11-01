@@ -1,6 +1,25 @@
-<h1 class="page-header">Редактирование продукта</h1>
-<div class="row">
-  <div class="col-xs-12">
-    <%= render partial: 'admin/products/product_form' %>
-  </div>
-</div>
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    Редактирование продукта
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="/"><i class="fa fa-dashboard"></i>Главная</a></li>
+    <li><a href="<%= admin_products_path %>">Продукты</a></li>
+    <li class="active">
+      <%= link_to @product.id, admin_product_path(@product) %>
+    </li>
+  </ol>
+</section>
+
+<!-- Main content -->
+<section class="content">
+  <% unless flash.empty? %>
+    <div class="row">
+      <div class="col-xs-12">
+        <%= render partial: 'layouts/flash_messages', flash: flash %>
+      </div>
+    </div>
+  <% end %>
+  <%= render partial: 'admin/products/product_form' %>
+</section><!-- /.content -->

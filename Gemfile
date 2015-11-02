@@ -37,6 +37,10 @@ gem 'simple_form'
 # Frontend dependencies manager
 gem 'bower-rails'
 
+# Paginator
+gem 'will_paginate', '~> 3.0.6'
+gem 'will_paginate-bootstrap'
+
 # Internalization
 gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'master'
 gem 'i18n-active_record',

@@ -1,0 +1,8 @@
+.product-photo {
+  padding: 9px;
+}
+
+.product-price {
+  @extend .lead;
+  margin-bottom: 0;
+}

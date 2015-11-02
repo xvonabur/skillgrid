@@ -18,8 +18,10 @@
           <%= f.simple_fields_for :photo, @product.photo do |ph| %>
             <% if @product.photo.persisted? && @product.photo.present? &&
                                             @product.photo.image_stored? %>
-              <div class="col-xs-offset-3 col-xs-9">
-                <%= image_tag @product.photo.image.thumb('200x100').url %>
+              <div class="form-group">
+                <div class="col-xs-offset-3 col-xs-9">
+                  <%= image_tag @product.photo.image.thumb('200x100').url %>
+                </div>
               </div>
               <%= ph.input :remove_image, as: :boolean,
                            wrapper: :horizontal_file_input %>
@@ -31,7 +33,7 @@
           <% end %>
         </div><!-- /.box-body -->
         <div class="box-footer">
-          <%= f.submit class: 'btn btn-info pull-right',
+          <%= f.submit class: 'btn btn-flat btn-info pull-right',
                        id: "#{ params[:action] }_product_submit"%>
         </div>
       <% end %>

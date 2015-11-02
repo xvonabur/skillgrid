@@ -1,0 +1,55 @@
+<section class="content-header">
+  <h1>
+    Продукты
+    <small>Список доступных продуктов</small>
+  </h1>
+</section>
+
+<section class="content">
+  <% if @products.blank? %>
+    <p>Нет данных</p>
+  <% else %>
+    <div class="row">
+    <% @products.each do |product| %>
+      <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="thumbnail">
+          <!-- IMAGE CONTAINER-->
+          <% if product.photo.present? && product.photo.image_stored? %>
+            <%= image_tag product.photo.image.thumb('320x').url,
+                          class: 'img-responsive product-photo' %>
+          <% else %>
+            <img class="img-responsive product-photo"
+                 src="http://placehold.it/320x180">
+          <% end %>
+          <!--END IMAGE CONTAINER-->
+          <!-- CAPTION -->
+          <div class="caption">
+            <h3 class=""><%= product.title %></h3>
+            <p class=""><%= product.description %></p>
+            <div class="row">
+              <div class="col-xs-6">
+                <p class="product-price">21 000 руб.</p>
+              </div>
+              <div class="col-xs-6">
+                <%= link_to 'Подробнее', product_path(product),
+                            class: 'btn btn-success btn-block',
+                            id: "product_#{ product.id }_show"%>
+              </div>
+            </div>
+          </div>
+          <!--END CAPTION -->
+        </div>
+      </div>
+    <% end %>
+    </div>
+  <% end %>
+
+  <hr/>
+
+  <div class="row text-center">
+    <div class="col-lg-12">
+      <%= will_paginate @products, renderer: BootstrapPagination::Rails %>
+    </div>
+  </div>
+
+</section>

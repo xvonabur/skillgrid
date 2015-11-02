@@ -1,13 +1,14 @@
 <!-- Content Header (Page header) -->
 <section class="content-header">
   <h1>
-    Редактирование продукта
+    <%= t('control_panel.captions.product_edit') %>
   </h1>
   <ol class="breadcrumb">
-    <li><a href="/"><i class="fa fa-dashboard"></i>Главная</a></li>
-    <li><a href="<%= admin_products_path %>">Продукты</a></li>
+    <li>
+      <%= link_to t('control_panel.captions.product_all'), admin_products_path %>
+    </li>
     <li class="active">
-      <%= link_to @product.id, admin_product_path(@product) %>
+      <%= link_to @product.id, edit_admin_product_path(@product) %>
     </li>
   </ol>
 </section>

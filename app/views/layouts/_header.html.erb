@@ -2,13 +2,9 @@
   <nav class="navbar navbar-static-top">
     <div class="container">
       <div class="navbar-header">
-        <a class="navbar-brand" href="
-        <% if !!current_user %>
-          <%= admin_products_path %>
-        <% else %>
-          <%= products_path %>
-        <% end %>">➚#</a>
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
+        <a class="navbar-brand" href="/">➚#</a>
+        <button type="button" class="navbar-toggle collapsed"
+                data-toggle="collapse" data-target="#navbar-collapse">
           <i class="fa fa-bars"></i>
         </button>
       </div>
@@ -17,7 +13,8 @@
       <div class="collapse navbar-collapse pull-left" id="navbar-collapse">
         <ul class="nav navbar-nav">
           <li class="<%= 'active' if current_page?(products_path) %>">
-            <%= link_to 'Продукты', products_path %>
+            <%= link_to t('control_panel.sidebar.menu.titles.products'),
+                        products_path %>
           </li>
         </ul>
       </div>
@@ -26,10 +23,13 @@
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           <li class="<%= 'active' if current_page?(new_user_registration_path) %>">
-            <%= link_to 'Регистрация', new_user_registration_path, id: 'user-sign-up-link' %>
+            <%= link_to t('devise.registrations.new.sign_up'),
+                        new_user_registration_path,
+                        id: 'user-sign-up-link' %>
           </li>
           <li class="<%= 'active' if current_page?(new_user_session_path) %>">
-            <%= link_to 'Вход', new_user_session_path, id: 'user-sign-in-link' %>
+            <%= link_to t('devise.sessions.new.sign_in'), new_user_session_path,
+                        id: 'user-sign-in-link' %>
           </li>
         </ul>
       </div>

@@ -4,7 +4,9 @@
     <!-- Horizontal Form -->
     <div class="box box-info">
       <div class="box-header with-border">
-        <h3 class="box-title">Продукт</h3>
+        <h3 class="box-title">
+          <%= t('control_panel.captions.product_show') %>
+        </h3>
       </div><!-- /.box-header -->
       <!-- form start -->
       <%= simple_form_for [:admin, @product],

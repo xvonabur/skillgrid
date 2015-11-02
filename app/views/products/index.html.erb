@@ -1,13 +1,13 @@
 <section class="content-header">
   <h1>
-    Продукты
-    <small>Список доступных продуктов</small>
+    <%= t('pages.products.index.header') %>
+    <small><%= t('pages.products.index.sub_header') %></small>
   </h1>
 </section>
 
 <section class="content">
   <% if @products.blank? %>
-    <p>Нет данных</p>
+    <p><%= t('table.no_data') %></p>
   <% else %>
     <div class="row">
     <% @products.each do |product| %>
@@ -31,7 +31,8 @@
                 <p class="product-price">21 000 руб.</p>
               </div>
               <div class="col-xs-6">
-                <%= link_to 'Подробнее', product_path(product),
+                <%= link_to t('pages.products.index.more_btn'),
+                            product_path(product),
                             class: 'btn btn-success btn-block',
                             id: "product_#{ product.id }_show"%>
               </div>

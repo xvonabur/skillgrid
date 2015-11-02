@@ -4,7 +4,7 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg"><%= t('.sign_in', default: 'Sign in') %></p>
+    <p class="login-box-msg"><%= t('.sign_in') %></p>
     <%= simple_form_for(resource, as: resource_name,
                         url: session_path(resource_name)) do |f| %>
       <%= f.error_notification %>
@@ -17,12 +17,13 @@
         <div class="col-xs-8">
           <% if devise_mapping.rememberable? %>
             <div class="checkbox icheck">
-              <%= f.input_field :remember_me, as: :boolean %> Запомнить меня
+              <%= f.input_field :remember_me, as: :boolean %>
+              <%= t('activerecord.attributes.user.remember_me') %>
             </div>
           <% end %>
         </div><!-- /.col -->
         <div class="col-xs-4">
-          <%= f.submit  t('.sign_in', default: 'Sign in'),
+          <%= f.submit  t('.sign_in'),
                         class: 'btn btn-primary btn-block btn-flat',
                         id: 'sign_in_submit_btn' %>
         </div><!-- /.col -->
@@ -30,7 +31,5 @@
       <%= render 'devise/shared/links' %>
     <% end %>
   </div>
-
-
 </div>
   <!-- /.login-box-body -->

@@ -9,6 +9,7 @@ ru:
         password_confirmation: "Подтверждение пароля"
         current_password: "Текущий пароль"
         remember_me: "Запомнить меня"
+        created_at: 'Зарегистрирован'
       product:
         title: "Заголовок"
         description: "Описание"
@@ -29,4 +30,41 @@ ru:
       previous_label: "&#8592;"
       next_label: "&#8594;"
       page_gap: "&hellip;"
+  table:
+    no_data: "Нет данных"
+  pages:
+    products:
+      index:
+        header: "Продукты"
+        sub_header: "Список доступных продуктов"
+        more_btn: "Подробнее"
+      show:
+        header: "Продукт"
+  control_panel:
+    captions:
+      product_show: "Продукт"
+      product_new: "Новый продукт"
+      product_edit: "Редактирование продукта"
+      products_all: "Все продукты"
+    box_titles:
+      admin_products_list: "Список продуктов"
+    tables:
+      admin_products:
+        headers:
+          id: "ID"
+          title: "Заголовок"
+          description: "Описание"
+          update_date: "Дата изменения"
+          photo: "Фото"
+          actions: "Действия"
+    sidebar:
+      menu:
+        header: "Главное меню"
+        titles:
+          products: "Продукты"
+          add_product: "Добавить новый"
+          all_products: "Все продукты"
+    user:
+      profile: "Профиль"
+      sign_out: "Выйти"
 

@@ -64,7 +64,7 @@ ru:
           products: "Продукты"
           add_product: "Добавить новый"
           all_products: "Все продукты"
-    user:
-      profile: "Профиль"
-      sign_out: "Выйти"
+  user:
+    profile: "Профиль"
+    sign_out: "Выйти"
 

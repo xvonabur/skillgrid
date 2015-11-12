@@ -6,7 +6,7 @@
   <ol class="breadcrumb">
     <li class="active">
       <%= link_to t('control_panel.captions.products_all'),
-                  admin_products_path %>
+                  control_panel_products_path %>
     </li>
   </ol>
 </section>
@@ -31,7 +31,7 @@
         <div class="box-body">
           <div class="row">
             <div class="col-sm-12">
-              <table id="admin-products-table"
+              <table id="control-panel-products-table"
                      class="table table-striped table-bordered">
                 <thead>
                 <tr role="row">
@@ -85,7 +85,7 @@
                       </td>
                       <td>
                         <span>
-                          <%= link_to(edit_admin_product_path(product.id),
+                          <%= link_to(edit_control_panel_product_path(product.id),
                                       class: 'btn btn-primary btn-flat',
                                       id: "product_#{product.id}_edit") do %>
                             <i class="fa fa-edit"></i>

@@ -1,4 +1,4 @@
-class Admin::ProductsController < ApplicationController
+class ControlPanel::ProductsController < ApplicationController
   before_action :authenticate_user!
 
   def index
@@ -15,7 +15,7 @@ class Admin::ProductsController < ApplicationController
 
     if @product.save
       flash[:success] = 'Создан новый продукт'
-      redirect_to admin_products_path
+      redirect_to control_panel_products_path
     else
       @product.build_photo
       render 'new'
@@ -31,7 +31,7 @@ class Admin::ProductsController < ApplicationController
     @product = Product.find(params[:id])
     if @product.update(product_params)
       flash[:success] = 'Изменение продукта прошло успешно'
-      redirect_to admin_products_path
+      redirect_to control_panel_products_path
     else
       render 'edit'
     end
@@ -43,7 +43,7 @@ class Admin::ProductsController < ApplicationController
     else
       flash[:danger] = 'Не удалось удалить продукт'
     end
-    redirect_to admin_products_path
+    redirect_to control_panel_products_path
   end
 
   private

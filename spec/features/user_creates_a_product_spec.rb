@@ -25,7 +25,7 @@ RSpec.feature 'User creates a product', type: :feature do
     expect {
       click_button 'new_product_submit'
     }.to change { Product.count }.by(1)
-    expect(current_path).to eq(admin_products_path)
+    expect(current_path).to eq(control_panel_products_path)
     expect(page).to have_css("a[href*='lightsaber']")
   end
 

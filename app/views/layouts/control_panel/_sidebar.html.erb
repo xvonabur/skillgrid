@@ -23,28 +23,28 @@
         <%= t('control_panel.sidebar.menu.header').mb_chars.upcase!.to_s %>
       </li>
       <li class="treeview
-        <%= 'active' if current_page?(admin_products_path) ||
-                        current_page?(new_admin_product_path) ||
+        <%= 'active' if current_page?(control_panel_products_path) ||
+                        current_page?(new_control_panel_product_path) ||
                         (controller.controller_name == 'admin/products' &&
                          controller.action_name == 'create')  %>">
-        <a href="<%= admin_products_path %>">
+        <a href="<%= control_panel_products_path %>">
           <i class="fa fa-file-text-o"></i>
           <span><%= t('control_panel.sidebar.menu.titles.products') %></span>
           <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu" id="sidebar-products-menu">
-          <li class="<%= 'active' if current_page?(new_admin_product_path) ||
+          <li class="<%= 'active' if current_page?(new_control_panel_product_path) ||
             (controller.controller_name == 'admin/products' &&
               controller.action_name == 'create')  %>">
-            <a href="<%= new_admin_product_path %>" id="new_product">
+            <a href="<%= new_control_panel_product_path %>" id="new_product">
               <i class="fa fa-plus"></i>
               <span>
                 <%= t('control_panel.sidebar.menu.titles.add_product') %>
               </span>
             </a>
           </li>
-          <li class="<%= 'active' if current_page?(admin_products_path) %>">
-            <a href="<%= admin_products_path %>">
+          <li class="<%= 'active' if current_page?(control_panel_products_path) %>">
+            <a href="<%= control_panel_products_path %>">
               <i class="fa fa-newspaper-o"></i>
               <span>
                 <%= t('control_panel.sidebar.menu.titles.all_products') %>

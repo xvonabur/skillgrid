@@ -15,7 +15,7 @@ RSpec.feature 'User logs in and logs out', type: :feature do
 
     login user.email, user.password
 
-    expect(current_path).to eq admin_products_path
+    expect(current_path).to eq control_panel_products_path
     expect(page).to have_content 'Вход в систему выполнен'
     expect(page).to have_content user.name
   end

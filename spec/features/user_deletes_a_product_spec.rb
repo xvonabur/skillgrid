@@ -10,7 +10,7 @@ RSpec.feature 'User deletes a product', type: :feature do
   end
 
   scenario 'and sees a product index page with delete link' do
-    expect(current_path).to eq(admin_products_path)
+    expect(current_path).to eq(control_panel_products_path)
     expect(page).to have_content(@product.title)
     expect(page).to have_content(@product.description)
     expect(page).to have_css("#product_#{@product.id}_del")

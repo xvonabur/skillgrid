@@ -5,10 +5,10 @@
   </h1>
   <ol class="breadcrumb">
     <li>
-      <%= link_to t('control_panel.captions.product_all'), admin_products_path %>
+      <%= link_to t('control_panel.captions.product_all'), control_panel_products_path %>
     </li>
     <li class="active">
-      <%= link_to @product.id, edit_admin_product_path(@product) %>
+      <%= link_to @product.id, edit_control_panel_product_path(@product) %>
     </li>
   </ol>
 </section>
@@ -22,5 +22,5 @@
       </div>
     </div>
   <% end %>
-  <%= render partial: 'admin/products/product_form' %>
+  <%= render partial: 'control_panel/products/product_form' %>
 </section><!-- /.content -->

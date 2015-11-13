@@ -8,7 +8,7 @@ RSpec.feature 'Guest navigates to products page', type: :feature do
     visit products_path
   end
 
-  scenario 'by clicking on button' do
+  scenario 'by clicking on link' do
     product = @products.first
 
     find("#product_#{product.id}_show").click

@@ -1,6 +1,12 @@
-<% flash.each do |type, message| %>
-    <% unless type.to_s == 'timedout' %>
-      <%= render partial: 'layouts/message',
-                 locals: { type: type, message: message } %>
-    <% end %>
+<% unless flash.empty? %>
+  <div class="row">
+    <div class="col-xs-12">
+      <% flash.each do |type, message| %>
+        <% unless type.to_s == 'timedout' %>
+          <%= render partial: 'layouts/message',
+                     locals: { type: type, message: message } %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 <% end %>

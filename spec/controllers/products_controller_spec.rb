@@ -1,7 +1,7 @@
 require 'rails_helper'
 require 'devise_setup'
 
-RSpec.describe ControlPanel::ProductsController, type: :controller do
+RSpec.describe ProductsController, type: :controller do
   it "doesn't allow guest to delete a product" do
     product = create(:product)
 

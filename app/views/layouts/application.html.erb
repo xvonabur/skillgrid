@@ -20,18 +20,11 @@
     <%= csrf_meta_tags %>
    </head>
 
-  <% if !!current_user %>
     <body class="login-page skin-blue sidebar-mini">
-      <%= render layout: 'layouts/control_panel/page' do %>
-        <%= yield %>
-      <% end %>
-    </body>
-  <% else %>
-    <body class="skin-blue layout-top-nav">
       <%= render layout: 'layouts/page' do %>
         <%= yield %>
       <% end %>
     </body>
-  <% end %>
+
 
 </html>

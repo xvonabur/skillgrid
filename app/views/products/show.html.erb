@@ -8,31 +8,37 @@
 <section class="content">
   <div class="row">
     <div class="col-xs-12">
-      <div class="thumbnail">
-        <!-- IMAGE CONTAINER-->
-        <div class="row">
-          <div class="col-md-4">
-            <% if @product.photo.present? && @product.photo.image_stored? %>
-              <%= image_tag @product.photo.image.thumb('320x').url,
-                            class: 'img-responsive product-photo' %>
-            <% else %>
-              <img class="img-responsive product-photo"
-                   src="http://placehold.it/320x180">
-            <% end %>
-          </div>
-          <!--END IMAGE CONTAINER-->
-          <!-- CAPTION -->
-          <div class="col-md-8">
-            <div class="caption">
-              <h3 class=""><%= @product.title %></h3>
-              <p class=""><%= @product.description %></p>
+      <div class="box">
+        <div class="box-header">
+          <h3 class="box-title">
+            <%= t('pages.box_titles.product_desc') %>
+          </h3>
+        </div>
+        <div class="box-body">
+          <div class="row">
+            <div class="col-xs-12">
               <div class="row">
+                <div class="col-xs-2">
+                  <h3 class="product-price">20 000 руб.</h3>
+                </div>
                 <div class="col-xs-6">
-                  <p class="product-price">21 000 руб.</p>
+                  <h3>
+                    <%= link_to(@product.title, product_path(@product.id),
+                                id: "product_#{@product.id}_show") %>
+                  </h3>
+                  <p><%= @product.description %></p>
+                </div>
+                <div class="col-xs-4">
+                  <% if @product.photo.present? && @product.photo.image_stored? %>
+                    <%= image_tag @product.photo.image.url,
+                                  class: 'img-responsive product-photo' %>
+                  <% else %>
+                    <img class="img-responsive product-photo"
+                         src="http://placehold.it/200x200">
+                  <% end %>
                 </div>
               </div>
             </div>
-            <!--END CAPTION -->
           </div>
         </div>
       </div>

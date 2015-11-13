@@ -1,35 +1,40 @@
-<div class="login-box">
-  <div class="login-logo">
-    <a href="/"><b>Skill</b>grid</a>
+<!-- Main content -->
+<section class="content">
+  <%= render partial: 'layouts/flash_messages', flash: flash %>
+
+  <div class="login-box">
+    <div class="login-logo">
+      <a href="/"><b>Skill</b>grid</a>
+    </div>
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+      <p class="login-box-msg"><%= t('.sign_in') %></p>
+      <%= simple_form_for(resource, as: resource_name,
+                          url: session_path(resource_name)) do |f| %>
+        <%= f.error_notification %>
+        <%= devise_error_messages! %>
+        <%= f.input :email,
+                    class: 'form-control' %>
+        <%= f.input :password,
+                    class: 'form-control' %>
+        <div class="row">
+          <div class="col-xs-8">
+            <% if devise_mapping.rememberable? %>
+              <div class="checkbox icheck">
+                <%= f.input_field :remember_me, as: :boolean %>
+                <%= t('activerecord.attributes.user.remember_me') %>
+              </div>
+            <% end %>
+          </div><!-- /.col -->
+          <div class="col-xs-4">
+            <%= f.submit  t('.sign_in'),
+                          class: 'btn btn-primary btn-block btn-flat',
+                          id: 'sign_in_submit_btn' %>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+        <%= render 'devise/shared/links' %>
+      <% end %>
+    </div>
   </div>
-  <!-- /.login-logo -->
-  <div class="login-box-body">
-    <p class="login-box-msg"><%= t('.sign_in') %></p>
-    <%= simple_form_for(resource, as: resource_name,
-                        url: session_path(resource_name)) do |f| %>
-      <%= f.error_notification %>
-      <%= devise_error_messages! %>
-      <%= f.input :email,
-                  class: 'form-control' %>
-      <%= f.input :password,
-                  class: 'form-control' %>
-      <div class="row">
-        <div class="col-xs-8">
-          <% if devise_mapping.rememberable? %>
-            <div class="checkbox icheck">
-              <%= f.input_field :remember_me, as: :boolean %>
-              <%= t('activerecord.attributes.user.remember_me') %>
-            </div>
-          <% end %>
-        </div><!-- /.col -->
-        <div class="col-xs-4">
-          <%= f.submit  t('.sign_in'),
-                        class: 'btn btn-primary btn-block btn-flat',
-                        id: 'sign_in_submit_btn' %>
-        </div><!-- /.col -->
-      </div><!-- /.row -->
-      <%= render 'devise/shared/links' %>
-    <% end %>
-  </div>
-</div>
   <!-- /.login-box-body -->
+</section><!-- /.content -->

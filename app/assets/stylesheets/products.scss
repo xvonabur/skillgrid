@@ -1,8 +1,12 @@
 .product-photo {
-  padding: 9px;
+  margin: 0 auto;
 }
 
 .product-price {
   @extend .lead;
-  margin-bottom: 0;
+  text-align: center;
+}
+
+.product-table-photo-block {
+  width: 200px;
 }

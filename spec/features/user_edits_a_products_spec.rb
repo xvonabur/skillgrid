@@ -39,7 +39,7 @@ RSpec.feature 'User edits a product', type: :feature do
     fill_in 'product_title', with: new_title
     find('#edit_product_submit').click
 
-    expect(current_path).to eq(control_panel_products_path)
+    expect(current_path).to eq(products_path)
     expect(page).to have_content(new_title)
     expect(page).not_to have_content(@product.title)
   end
@@ -51,7 +51,7 @@ RSpec.feature 'User edits a product', type: :feature do
     fill_in 'product_description', with: new_desc
     find('#edit_product_submit').click
 
-    expect(current_path).to eq(control_panel_products_path)
+    expect(current_path).to eq(products_path)
     expect(page).to have_content(new_desc)
     expect(page).not_to have_content(@product.description)
   end

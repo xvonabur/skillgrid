@@ -1,0 +1,62 @@
+<!-- Left side column. contains the logo and sidebar -->
+<aside class="main-sidebar">
+  <!-- sidebar: style can be found in sidebar.less -->
+  <section class="sidebar" style="height: auto;">
+    <% if !!current_user %>
+      <!-- Sidebar user panel -->
+      <div class="user-panel">
+        <div class="pull-left image">
+          <%= image_tag 'users/default_userpic.png',
+                        class: 'img-circle',
+                        alt: 'User Image'  %>
+        </div>
+        <div class="pull-left info">
+          <p><%= current_user.name %></p>
+          <a href="#">
+            <i class="fa fa-circle text-success"></i>
+          </a>
+        </div>
+      </div>
+    <% end %>
+    <!-- sidebar menu: : style can be found in sidebar.less -->
+    <ul class="sidebar-menu">
+      <li class="header">
+        <%= t('pages.sidebar.menu.header').mb_chars.upcase!.to_s %>
+      </li>
+      <li class="treeview
+        <%= 'active' if current_page?(products_path) ||
+                        current_page?(new_product_path) ||
+                        (controller.controller_name == 'products' &&
+                         controller.action_name == 'create')  %>">
+        <a href="<%= products_path %>">
+          <i class="fa fa-file-text-o"></i>
+          <span><%= t('pages.sidebar.menu.titles.products') %></span>
+          <i class="fa fa-angle-left pull-right"></i>
+        </a>
+        <ul class="treeview-menu" id="sidebar-products-menu">
+          <% if !!current_user %>
+            <li class="<%= 'active' if current_page?(new_product_path) ||
+              (controller.controller_name == 'products' &&
+                controller.action_name == 'create')  %>">
+              <a href="<%= new_product_path %>" id="new_product">
+                <i class="fa fa-plus"></i>
+                <span>
+                  <%= t('pages.sidebar.menu.titles.add_product') %>
+                </span>
+              </a>
+            </li>
+          <% end %>
+          <li class="<%= 'active' if current_page?(products_path) %>">
+            <a href="<%= products_path %>">
+              <i class="fa fa-newspaper-o"></i>
+              <span>
+                <%= t('pages.sidebar.menu.titles.all_products') %>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+  <!-- /.sidebar -->
+</aside>

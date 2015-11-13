@@ -40,21 +40,21 @@ ru:
         more_btn: "Подробнее"
       show:
         header: "Продукт"
-  control_panel:
     captions:
       product_show: "Продукт"
       product_new: "Новый продукт"
       product_edit: "Редактирование продукта"
       products_all: "Все продукты"
     box_titles:
-      admin_products_list: "Список продуктов"
+      products_list: "Список продуктов"
+      product_desc: "Описание продукта"
     tables:
-      admin_products:
+      products:
         headers:
           id: "ID"
           title: "Заголовок"
           description: "Описание"
-          update_date: "Дата изменения"
+          price: "Цена"
           photo: "Фото"
           actions: "Действия"
     sidebar:

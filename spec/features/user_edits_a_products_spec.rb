@@ -26,10 +26,11 @@ RSpec.feature 'User edits a product', type: :feature do
 
   scenario 'and removes an image' do
     find("#product_#{ @product.id }_edit").click
-    find('#product_photo_attributes_remove_image').click
+    check 'product_photo_attributes_remove_image'
     find('#edit_product_submit').click
 
-    expect(@product.reload.photo.image).to eq(nil)
+    expect(current_path).to eq(products_path)
+    expect(page).not_to have_css("img[src*='#{ @product.photo.image.name }']")
   end
 
   scenario 'and changes title' do
@@ -43,7 +44,7 @@ RSpec.feature 'User edits a product', type: :feature do
     expect(page).to have_content(new_title)
     expect(page).not_to have_content(@product.title)
   end
-
+  
   scenario 'and changes description' do
     new_desc = 'Another cool description'
 
@@ -54,6 +55,7 @@ RSpec.feature 'User edits a product', type: :feature do
     expect(current_path).to eq(products_path)
     expect(page).to have_content(new_desc)
     expect(page).not_to have_content(@product.description)
+    expect(page).to have_css("img[src*='#{ @product.photo.image.name }']")
   end
 
 

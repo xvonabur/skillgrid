@@ -13,6 +13,7 @@ ru:
       product:
         title: "Заголовок"
         description: "Описание"
+        price: 'Цена'
       photo:
         image: "Фото"
         remove_image: "Удалить фото"

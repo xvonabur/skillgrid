@@ -10,6 +10,7 @@ FactoryGirl.define do
   factory :product do
     sequence(:title)         { |n| "Super quality product# #{n}" }
     sequence(:description)   { |n| "This is the description for product# #{n}" }
+    sequence(:price)         { |n| n * 1000 }
     photo
   end
 

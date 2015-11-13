@@ -43,8 +43,9 @@ RSpec.feature 'User edits a product', type: :feature do
     expect(current_path).to eq(products_path)
     expect(page).to have_content(new_title)
     expect(page).not_to have_content(@product.title)
+    expect(page).to have_css("img[src*='#{ @product.photo.image.name }']")
   end
-  
+
   scenario 'and changes description' do
     new_desc = 'Another cool description'
 
@@ -55,6 +56,19 @@ RSpec.feature 'User edits a product', type: :feature do
     expect(current_path).to eq(products_path)
     expect(page).to have_content(new_desc)
     expect(page).not_to have_content(@product.description)
+    expect(page).to have_css("img[src*='#{ @product.photo.image.name }']")
+  end
+
+  scenario 'and changes price' do
+    new_price = 342100
+
+    find("#product_#{ @product.id }_edit").click
+    fill_in 'product_price', with: new_price
+    find('#edit_product_submit').click
+
+    expect(current_path).to eq(products_path)
+    expect(page).to have_content(new_price.to_f / 100)
+    expect(page).not_to have_content(@product.price)
     expect(page).to have_css("img[src*='#{ @product.photo.image.name }']")
   end
 

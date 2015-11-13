@@ -89,7 +89,10 @@
                         <% end %>
                       </td>
                       <td style="width: 25%; min-height: 200px;">
-                        <h3 class="product-price">20 000 руб.</h3>
+                        <h3 class="product-price">
+                          <%= product.price.present? ?
+                              product.price.to_f / 100 : '?' %> руб.
+                        </h3>
                       </td>
                     </tr>
                   <% end %>

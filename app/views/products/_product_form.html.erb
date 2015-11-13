@@ -17,6 +17,7 @@
 
           <%= f.input :title, autofocus: true, class: 'form-control' %>
           <%= f.input :description, class: 'form-control' %>
+          <%= f.input :price, class: 'form-control' %>
           <%= f.simple_fields_for :photo, @product.photo do |ph| %>
             <% if @product.photo.persisted? && @product.photo.present? &&
                                             @product.photo.image_stored? %>

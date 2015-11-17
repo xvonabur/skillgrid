@@ -12,6 +12,8 @@
 
       <% if resource.admin.present? %>
         <%= render partial: 'admin_form' %>
+      <% elsif resource.shop_owner.present? %>
+        <%= render partial: 'shop_owner_form' %>
       <% else %>
         <%= render partial: 'guest_form' %>
       <% end %>

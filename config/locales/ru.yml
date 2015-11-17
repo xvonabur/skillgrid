@@ -14,6 +14,7 @@ ru:
         birthday: "Дата рождения"
         avatar: "Аватар"
         passport: "Паспорт"
+        shop: "Название магазина"
       product:
         title: "Заголовок"
         description: "Описание"
@@ -25,6 +26,8 @@ ru:
         image: "Аватар"
       passport:
         image: "Паспорт"
+      shop:
+        name: "Название магазина"
   helpers:
     submit:
       product:

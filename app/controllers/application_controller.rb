@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
     # Add name to devise strong parameters
-    sign_up_params = [:name, :last_name, :birthday, :admin,
+    sign_up_params = [:name, :last_name, :birthday, :admin, :guest,
                       avatar_attributes: [
                         :image, :title, :id, :remove_image ],
                       passport_attributes: [

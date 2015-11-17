@@ -40,7 +40,7 @@ ru:
         we_need_your_current_password_to_confirm_your_changes: "введите текущий пароль для подтверждения изменений"
       new:
         sign_up: "Регистрация"
-      user_form:
+      guest_form:
         sign_up: "Регистрация"
       admin_form:
         sign_up: "Регистрация"

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Guest navigates to products page', type: :feature do
+RSpec.feature 'Not signed in user navigates to products page', type: :feature do
   before do
     @products = []
     5.times { @products << create(:product) }

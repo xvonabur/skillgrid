@@ -1,8 +1,7 @@
 <%= simple_form_for(resource, as: resource_name,
                     url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
-  <%= f.input :name,  autofocus: true,
-              class: 'form-control' %>
+  <%= f.input :guest, as: :hidden %>
   <%= f.input :email, required: true,
               class: 'form-control' %>
   <%= f.input :password,  required: true,

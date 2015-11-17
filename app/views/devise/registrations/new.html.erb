@@ -13,7 +13,7 @@
       <% if resource.admin.present? %>
         <%= render partial: 'admin_form' %>
       <% else %>
-        <%= render partial: 'user_form' %>
+        <%= render partial: 'guest_form' %>
       <% end %>
 
       <%= render 'devise/shared/links' %>

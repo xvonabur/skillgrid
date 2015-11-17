@@ -4,6 +4,8 @@ class RegistrationsController < Devise::RegistrationsController
     super do
       if params[:type] == 'admin'
         resource.admin = true
+      else
+        resource.guest = true
       end
     end
   end

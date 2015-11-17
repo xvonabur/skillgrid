@@ -14,8 +14,10 @@
 //= require jquery.turbolinks
 //= require jquery_ujs
 //= require bootstrap-sass-official/assets/javascripts/bootstrap-sprockets
+//= require bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js
+//= require bootstrap-datepicker/dist/locales/bootstrap-datepicker.ru.min.js
 //= require fastclick/lib/fastclick.js
 //= require admin-lte/dist/js/app.js
 //= require iCheck/icheck.min.js
-//= require turbolinks
 //= require_tree .
+//= require turbolinks

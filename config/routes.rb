@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :products
 
+  devise_for :users, controllers: { registrations: 'registrations' }
+
   devise_scope :user do
     authenticated :user do
       root to: redirect('/products'), as: 'authenticated'
@@ -10,5 +12,4 @@ Rails.application.routes.draw do
     end
   end
 
-  devise_for :users
 end

@@ -5,3 +5,9 @@ $(function () {
         increaseArea: '20%' // optional
     });
 });
+
+$(document).ready(function () {
+  $('#user_birthday').datepicker({
+    startDate: '-100y'
+  });
+});

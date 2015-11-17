@@ -10,6 +10,10 @@ ru:
         current_password: "Текущий пароль"
         remember_me: "Запомнить меня"
         created_at: 'Зарегистрирован'
+        last_name: "Фамилия"
+        birthday: "Дата рождения"
+        avatar: "Аватар"
+        passport: "Паспорт"
       product:
         title: "Заголовок"
         description: "Описание"
@@ -17,6 +21,10 @@ ru:
       photo:
         image: "Фото"
         remove_image: "Удалить фото"
+      avatar:
+        image: "Аватар"
+      passport:
+        image: "Паспорт"
   helpers:
     submit:
       product:

@@ -15,14 +15,18 @@
         <div class="box-body">
           <%= f.error_notification %>
 
-          <%= f.input :title, autofocus: true, class: 'form-control' %>
-          <%= f.input :description, class: 'form-control' %>
-          <%= f.input :price, class: 'form-control' %>
+          <%= f.input :title, autofocus: true %>
+          <%= f.input :description %>
+          <%= f.input :price %>
+          <% if can? :make_pro, @product %>
+            <%= f.input :pro, as: :boolean, wrapper: :horizontal_file_input %>
+          <% end %>
+
           <%= f.simple_fields_for :photo, @product.photo do |ph| %>
             <% if @product.photo.persisted? && @product.photo.present? &&
                                             @product.photo.image_stored? %>
               <div class="form-group">
-                <div class="col-xs-offset-3 col-xs-9">
+                <div class="col-xs-offset-2 col-xs-9">
                   <%= image_tag @product.photo.image.thumb('200x100').url %>
                 </div>
               </div>

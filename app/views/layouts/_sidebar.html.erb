@@ -48,7 +48,7 @@
             </li>
           <% end %>
           <li class="<%= 'active' if current_page?(products_path) %>">
-            <a href="<%= products_path %>">
+            <a href="<%= products_path %>" id="all_products">
               <i class="fa fa-newspaper-o"></i>
               <span>
                 <%= t('pages.sidebar.menu.titles.all_products') %>

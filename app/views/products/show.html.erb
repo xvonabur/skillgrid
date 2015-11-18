@@ -28,7 +28,10 @@
                     <%= link_to(@product.title, product_path(@product.id),
                                 id: "product_#{@product.id}_show") %>
                   </h3>
-                  <p><%= @product.description %></p>
+                  <% if @product.pro? %>
+                    <span class="label label-primary">PRO</span>
+                  <% end %>
+                  <%= @product.description %>
                 </div>
                 <div class="col-xs-4">
                   <% if @product.photo.present? && @product.photo.image_stored? %>

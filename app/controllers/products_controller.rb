@@ -2,7 +2,12 @@ class ProductsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @products = Product.all.paginate(page: params[:page], per_page: 10)
+    if can? :see_pro_ones, Product
+      visible_products = Product.all
+    else
+      visible_products = Product.where(pro: false)
+    end
+    @products = visible_products.paginate(page: params[:page], per_page: 10)
   end
 
   def show
@@ -33,6 +38,9 @@ class ProductsController < ApplicationController
 
   def update
     @product = Product.find(params[:id])
+
+    authorize! :make_pro, @product if params[:product][:pro] != @product.pro
+
     if @product.update(product_params)
       flash[:success] = 'Изменение продукта прошло успешно'
       redirect_to products_path
@@ -52,9 +60,8 @@ class ProductsController < ApplicationController
 
   private
   def product_params
-    params.require(:product).permit(:title, :description, :price,
+    params.require(:product).permit(:title, :description, :price, :pro,
                                     photo_attributes: [:image, :title, :id,
                                                        :remove_image])
   end
-
 end

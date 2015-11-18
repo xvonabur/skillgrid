@@ -66,7 +66,12 @@
                           <%= link_to(product.title, product_path(product.id),
                                       id: "product_#{product.id}_show") %>
                         </h3>
-                        <p><%= product.description %></p>
+                        <p>
+                          <% if product.pro? %>
+                            <span class="label label-primary">PRO</span>
+                          <% end %>
+                          <%= product.description %>
+                        </p>
                         <% if !!current_user %>
                           <p>
                             <span>

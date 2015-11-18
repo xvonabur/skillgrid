@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.feature 'Guest sign ups', type: :feature do
   before do
     visit '/'
-    visit new_user_registration_path
+    find('#sign-up-dropdown').click
+    find('#guest-sign-up-link').click
   end
 
   scenario 'with correct details' do

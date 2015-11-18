@@ -24,7 +24,7 @@
               <%= image_tag 'users/default_userpic.png',
                             class: 'user-image',
                             alt: 'User Image' %>
-              <span class="hidden-xs"><%= current_user.name %></span>
+              <span class="hidden-xs"><%= current_user.email %></span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
@@ -33,7 +33,7 @@
                               class: 'img-circle',
                               alt: 'User Image' %>
                 <p>
-                  <%= current_user.name %>
+                  <%= current_user.email %>
                   <small><%= t('activerecord.attributes.user.created_at') %>
                     <%= I18n.localize(current_user.created_at, format: :long) %>
                   </small>
@@ -61,10 +61,34 @@
     <% else %>
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-          <li class="<%= 'active' if current_page?(new_user_registration_path) %>">
-            <%= link_to t('devise.registrations.new.sign_up'),
-                        new_user_registration_path,
-                        id: 'user-sign-up-link' %>
+          <li class="dropdown <%= 'active' if
+                                  current_page?(new_user_registration_path) %>"
+              id="sign-up-dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                        aria-expanded="false">
+              <%= t('devise.registrations.new.sign_up') %>
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+              <li class="<%= 'active' if
+                             current_page?(new_user_registration_path(type: 'admin')) %>">
+                <%= link_to t('devise.registrations.new.admin_sign_up'),
+                            new_user_registration_path(type: 'admin'),
+                            id: 'admin-sign-up-link' %>
+              </li>
+              <li class="<%= 'active' if
+                             current_page?(new_user_registration_path(type: 'shop_owner')) %>">
+                <%= link_to t('devise.registrations.new.shop_owner_sign_up'),
+                            new_user_registration_path(type: 'shop_owner'),
+                            id: 'shop-owner-sign-up-link' %>
+              </li>
+              <li class="<%= 'active' if
+                             current_page?(new_user_registration_path(type: 'guest')) %>">
+                <%= link_to t('devise.registrations.new.guest_sign_up'),
+                            new_user_registration_path(type: 'guest'),
+                            id: 'guest-sign-up-link' %>
+              </li>
+            </ul>
           </li>
           <li class="<%= 'active' if current_page?(new_user_session_path) %>">
             <%= link_to t('devise.sessions.new.sign_in'), new_user_session_path,

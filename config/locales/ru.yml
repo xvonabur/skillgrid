@@ -79,4 +79,8 @@ ru:
   user:
     profile: "Профиль"
     sign_out: "Выйти"
+    roles:
+      admin: "Администратор"
+      shop_owner: "Владелец магазина"
+      guest: "Гость"
 

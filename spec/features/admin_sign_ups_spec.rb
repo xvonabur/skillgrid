@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.feature 'Admin sign ups', type: :feature do
   before do
     visit '/'
-    visit new_user_registration_path(type: 'admin')
+    find('#sign-up-dropdown').click
+    find('#admin-sign-up-link').click
   end
 
   scenario 'with correct details' do

@@ -10,4 +10,14 @@ module ApplicationHelper
       when 'danger' then 'alert alert-danger'
     end
   end
+
+  def user_role(user)
+    if user.admin?
+      I18n.t('user.roles.admin')
+    elsif user.shop_owner?
+      I18n.t('user.roles.shop_owner')
+    else
+      I18n.t('user.roles.guest')
+    end
+  end
 end

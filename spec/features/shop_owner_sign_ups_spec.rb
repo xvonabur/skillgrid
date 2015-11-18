@@ -10,7 +10,9 @@ RSpec.feature 'Shop owner sign ups', type: :feature do
   scenario 'with correct details' do
     fill_in_shop_owner_data
 
-    expect { click_button 'sign_up_submit_btn' }.to change { User.count }.by(1)
+    expect { click_button 'sign_up_submit_btn' }.to change {
+      User.shop_owners.count
+    }.by(1)
   end
 
   scenario 'with existent shop' do
@@ -45,7 +47,9 @@ RSpec.feature 'Shop owner sign ups', type: :feature do
     scenario 'blank fields on submit' do
       click_button 'sign_up_submit_btn'
 
-      expect { click_button 'sign_up_submit_btn' }.not_to change { User.count }
+      expect { click_button 'sign_up_submit_btn' }.not_to change {
+        User.shop_owners.count
+      }
       expect(page).to have_content('Email не может быть пустым', count: 1)
       expect(page).to have_content('Пароль не может быть пустым', count: 1)
       expect(page).to have_content('Аватар не может быть пустым', count: 1)
@@ -56,7 +60,9 @@ RSpec.feature 'Shop owner sign ups', type: :feature do
     scenario 'blank shop name' do
       fill_in_shop_owner_data(shop_name: '')
 
-      expect { click_button 'sign_up_submit_btn' }.not_to change { User.count }
+      expect { click_button 'sign_up_submit_btn' }.not_to change {
+        User.shop_owners.count
+      }
       expect(page).to have_content('Название магазина не может быть пустым',
                                    count: 1)
     end
@@ -64,7 +70,9 @@ RSpec.feature 'Shop owner sign ups', type: :feature do
     scenario 'blank avatar' do
       fill_in_shop_owner_data(avatar: '')
 
-      expect { click_button 'sign_up_submit_btn' }.not_to change { User.count }
+      expect { click_button 'sign_up_submit_btn' }.not_to change {
+        User.shop_owners.count
+      }
       expect(page).to have_content('Аватар не может быть пустым', count: 1)
     end
 
@@ -73,7 +81,9 @@ RSpec.feature 'Shop owner sign ups', type: :feature do
       fill_in_shop_owner_data(passwd: 'password1234',
                          passwd_confirm: 'not-matched-password')
 
-      expect { click_button 'sign_up_submit_btn' }.not_to change { User.count }
+      expect { click_button 'sign_up_submit_btn' }.not_to change {
+        User.shop_owners.count
+      }
       expect(page).to have_content(
         'Подтверждение пароля не совпадает со значением поля Пароль', count: 1)
     end
@@ -83,14 +93,18 @@ RSpec.feature 'Shop owner sign ups', type: :feature do
 
       fill_in_shop_owner_data(email: 'name@mail.com')
 
-      expect { click_button 'sign_up_submit_btn' }.not_to change { User.count }
+      expect { click_button 'sign_up_submit_btn' }.not_to change {
+        User.shop_owners.count
+      }
       expect(page).to have_content('Email уже существует', count: 1)
     end
 
     scenario 'invalid email' do
       fill_in_shop_owner_data(email: 'invalid-email-for-testing')
 
-      expect { click_button 'sign_up_submit_btn' }.not_to change { User.count }
+      expect { click_button 'sign_up_submit_btn' }.not_to change {
+        User.shop_owners.count
+      }
       expect(page).to have_content('Email имеет неверное значение', count: 1)
     end
 
@@ -100,7 +114,9 @@ RSpec.feature 'Shop owner sign ups', type: :feature do
       fill_in_shop_owner_data(passwd: too_short_password,
                          passwd_confirm: too_short_password)
 
-      expect { click_button 'sign_up_submit_btn' }.not_to change { User.count }
+      expect { click_button 'sign_up_submit_btn' }.not_to change {
+        User.shop_owners.count
+      }
       expect(page).to have_content(
               'Пароль недостаточной длины (не может быть меньше 8 символов)',
               count: 1)

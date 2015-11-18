@@ -11,6 +11,18 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :passport
   accepts_nested_attributes_for :shop
 
+  scope :admins, -> {
+    where(admin: true)
+  }
+
+  scope :shop_owners, -> {
+    where(shop_owner: true)
+  }
+
+  scope :guests, -> {
+    where(guest: true)
+  }
+
   validates_presence_of     :email
   validates_uniqueness_of   :email, allow_blank: true, if: :email_changed?
   validates_format_of       :email, with: Devise.email_regexp,

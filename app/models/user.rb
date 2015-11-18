@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
 
 
   def check_shop_existence
-    unless self.shop.persisted?
+    unless self.shop.blank? || self.shop.persisted?
       shop = Shop.where(name: self.shop.name).first
       self.shop = shop if shop.present?
     end

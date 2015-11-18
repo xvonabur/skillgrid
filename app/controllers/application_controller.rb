@@ -11,9 +11,9 @@ class ApplicationController < ActionController::Base
     # Add name to devise strong parameters
     sign_up_params = [:name, :last_name, :birthday, :admin, :guest, :shop_owner,
                       avatar_attributes: [
-                        :image, :title, :id, :remove_image ],
+                        :image, :id, :remove_image],
                       passport_attributes: [
-                        :image, :title, :id, :remove_image ],
+                        :image, :id, :remove_image],
                       shop_attributes: [:name]]
     devise_parameter_sanitizer.for(:sign_up).concat sign_up_params
   end

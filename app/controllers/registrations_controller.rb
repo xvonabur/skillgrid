@@ -2,7 +2,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   def new
     super do
-      resource.shop_owner = resource.guest = resource.guest = false
+      resource.shop_owner = resource.guest = resource.admin = false
       if params[:type] == 'admin'
         resource.admin = true
       elsif params[:type] == 'shop_owner'
@@ -12,5 +12,7 @@ class RegistrationsController < Devise::RegistrationsController
       end
     end
   end
+
+
 
 end

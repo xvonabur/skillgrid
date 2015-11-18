@@ -35,11 +35,9 @@ SimpleForm.setup do |config|
     b.optional :readonly
 
     b.wrapper tag: 'div', class: 'checkbox' do |ba|
-      ba.use :label_input
+      ba.use :label_input, class: 'control-label'
     end
 
-    b.use :error, wrap_with: { tag: 'span', class: 'help-block' }
-    b.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
   end
 
   config.wrappers :vertical_radio_and_checkboxes, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
@@ -58,9 +56,9 @@ SimpleForm.setup do |config|
     b.optional :pattern
     b.optional :min_max
     b.optional :readonly
-    b.use :label, class: 'col-sm-3 control-label'
+    b.use :label, class: 'col-sm-2 control-label'
 
-    b.wrapper tag: 'div', class: 'col-sm-9' do |ba|
+    b.wrapper tag: 'div', class: 'col-sm-10' do |ba|
       ba.use :input, class: 'form-control'
       ba.use :error, wrap_with: { tag: 'span', class: 'help-block' }
       ba.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
@@ -72,9 +70,10 @@ SimpleForm.setup do |config|
     b.use :placeholder
     b.optional :maxlength
     b.optional :readonly
-    b.use :label, class: 'col-sm-3 control-label'
+    b
+    b.use :label, class: 'col-sm-4 control-label'
 
-    b.wrapper tag: 'div', class: 'col-sm-9' do |ba|
+    b.wrapper tag: 'div', class: 'col-sm-8' do |ba|
       ba.use :input
       ba.use :error, wrap_with: { tag: 'span', class: 'help-block' }
       ba.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
@@ -85,9 +84,9 @@ SimpleForm.setup do |config|
     b.use :html5
     b.optional :readonly
 
-    b.wrapper tag: 'div', class: 'col-sm-offset-3 col-sm-9' do |wr|
+    b.wrapper tag: 'div', class: 'col-sm-offset-2 col-sm-10' do |wr|
       wr.wrapper tag: 'div', class: 'checkbox' do |ba|
-        ba.use :label_input
+        ba.use :label_input, class: 'col-sm-10'
       end
 
       wr.use :error, wrap_with: { tag: 'span', class: 'help-block' }
@@ -99,9 +98,9 @@ SimpleForm.setup do |config|
     b.use :html5
     b.optional :readonly
 
-    b.use :label, class: 'col-sm-3 control-label'
+    b.use :label, class: 'col-sm-2 control-label'
 
-    b.wrapper tag: 'div', class: 'col-sm-9' do |ba|
+    b.wrapper tag: 'div', class: 'col-sm-10' do |ba|
       ba.use :input
       ba.use :error, wrap_with: { tag: 'span', class: 'help-block' }
       ba.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
@@ -122,16 +121,22 @@ SimpleForm.setup do |config|
     b.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
   end
 
-  config.wrappers :multi_select, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
+  config.wrappers :auth_form, tag: 'div', class: 'form-group has-feedback', error_class: 'has-error' do |b|
     b.use :html5
+    b.use :placeholder
+    b.optional :maxlength
+    b.optional :pattern
+    b.optional :min_max
     b.optional :readonly
-    b.use :label, class: 'control-label'
-    b.wrapper tag: 'div', class: 'form-inline' do |ba|
-      ba.use :input, class: 'form-control'
-      ba.use :error, wrap_with: { tag: 'span', class: 'help-block' }
-      ba.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
+
+    b.use :input, class: 'form-control'
+    b.wrapper :field_icon, tag: 'span' do |ba|
     end
+    b.use :error, wrap_with: { tag: 'span', class: 'help-block' }
+    b.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
+
   end
+
   # Wrappers for forms and inputs using the Bootstrap toolkit.
   # Check the Bootstrap docs (http://getbootstrap.com)
   # to learn about the different styles for forms and inputs,
@@ -142,8 +147,5 @@ SimpleForm.setup do |config|
     radio_buttons: :vertical_radio_and_checkboxes,
     file: :vertical_file_input,
     boolean: :vertical_boolean,
-    datetime: :multi_select,
-    date: :multi_select,
-    time: :multi_select
   }
 end

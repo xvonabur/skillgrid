@@ -6,10 +6,9 @@ class User < ActiveRecord::Base
 
   has_one :passport
   has_one :avatar
-  belongs_to :shop
+  has_many :products
   accepts_nested_attributes_for :avatar
   accepts_nested_attributes_for :passport
-  accepts_nested_attributes_for :shop
 
   scope :admins, -> {
     where(admin: true)
@@ -43,17 +42,7 @@ class User < ActiveRecord::Base
                             allow_blank: true,
                             if: :guest? && :password_required?
   validates_confirmation_of :password, if: :password_required?
-  validates_presence_of     :shop, if: :shop_owner?
-
-  before_validation :check_shop_existence, if: :shop_owner?
-
-
-  def check_shop_existence
-    unless self.shop.blank? || self.shop.persisted?
-      shop = Shop.where(name: self.shop.name).first
-      self.shop = shop if shop.present?
-    end
-  end
+  validates_presence_of     :shop_name, if: :shop_owner?
 
 
   protected

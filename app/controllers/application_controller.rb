@@ -17,11 +17,11 @@ class ApplicationController < ActionController::Base
   def configure_permitted_parameters
     # Add name to devise strong parameters
     sign_up_params = [:name, :last_name, :birthday, :admin, :guest, :shop_owner,
+                      :shop_name,
                       avatar_attributes: [
                         :image, :id, :remove_image],
                       passport_attributes: [
-                        :image, :id, :remove_image],
-                      shop_attributes: [:name]]
+                        :image, :id, :remove_image]]
     devise_parameter_sanitizer.for(:sign_up).concat sign_up_params
   end
 

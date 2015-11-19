@@ -14,7 +14,7 @@ ru:
         birthday: "Дата рождения"
         avatar: "Аватар"
         passport: "Паспорт"
-        shop: "Название магазина"
+        shop_name: "Название магазина"
       product:
         title: "Заголовок"
         description: "Описание"

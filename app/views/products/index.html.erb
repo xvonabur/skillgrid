@@ -66,6 +66,11 @@
                           <%= link_to(product.title, product_path(product.id),
                                       id: "product_#{product.id}_show") %>
                         </h3>
+                        <% if product.respond_to?(:shop_name) &&
+                              product.shop_name.present? &&
+                              can?(:read_shop_name, product) %>
+                          <p>Магазин: <%= product.shop_name %></p>
+                        <% end %>
                         <p>
                           <% if product.pro? %>
                             <span class="label label-primary">PRO</span>
@@ -74,22 +79,26 @@
                         </p>
                         <% if !!current_user %>
                           <p>
-                            <span>
-                              <%= link_to(edit_product_path(product.id),
-                                          class: 'btn btn-primary btn-flat',
-                                          id: "product_#{product.id}_edit") do %>
-                                <i class="fa fa-edit"></i>
-                              <% end %>
-                            </span>
-                            <span>
-                              <%= link_to({ action: 'destroy',
-                                            id: product.id },
-                                          method: :delete,
-                                          class: 'btn btn-danger btn-flat',
-                                          id: "product_#{product.id}_del") do %>
-                                <i class="fa fa-trash"></i>
-                              <% end %>
-                            </span>
+                            <% if can?(:update, product)%>
+                              <span>
+                                <%= link_to(edit_product_path(product.id),
+                                            class: 'btn btn-primary btn-flat',
+                                            id: "product_#{product.id}_edit") do %>
+                                  <i class="fa fa-edit"></i>
+                                <% end %>
+                              </span>
+                            <% end %>
+                            <% if can?(:delete, product)%>
+                              <span>
+                                <%= link_to({ action: 'destroy',
+                                              id: product.id },
+                                            method: :delete,
+                                            class: 'btn btn-danger btn-flat',
+                                            id: "product_#{product.id}_del") do %>
+                                  <i class="fa fa-trash"></i>
+                                <% end %>
+                              </span>
+                            <% end %>
                           </p>
                         <% end %>
                       </td>

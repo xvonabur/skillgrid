@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.feature 'User deletes a product', type: :feature do
+RSpec.feature 'Shop owner deletes a product', type: :feature do
   before do
-    user = create(:user)
+    user = create(:shop_owner)
     @product = create(:product)
     visit new_user_session_path
 

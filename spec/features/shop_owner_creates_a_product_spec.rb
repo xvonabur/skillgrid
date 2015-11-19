@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.feature 'User creates a product', type: :feature do
+RSpec.feature 'Shop owner creates a product', type: :feature do
   before do
-    user = create(:user)
+    user = create(:shop_owner)
     visit new_user_session_path
 
     login user.email, user.password

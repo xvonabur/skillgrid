@@ -15,13 +15,6 @@ RSpec.feature 'Shop owner sign ups', type: :feature do
     }.by(1)
   end
 
-  scenario 'with existent shop' do
-    shop = create(:shop)
-
-    fill_in_shop_owner_data(shop_name: shop.name)
-
-    expect { click_button 'sign_up_submit_btn' }.not_to change { Shop.count }
-  end
 
   context 'with invalid details using' do
 
@@ -40,7 +33,7 @@ RSpec.feature 'Shop owner sign ups', type: :feature do
         find_field('user_avatar_attributes_image', type: 'file').value
       ).to be_nil
       expect(
-        find_field('user_shop_attributes_name', type: 'text').value
+        find_field('user_shop_name', type: 'text').value
       ).to be_nil
     end
 
@@ -135,7 +128,7 @@ RSpec.feature 'Shop owner sign ups', type: :feature do
     fill_in 'user_email', with: email
     fill_in 'user_password', with: passwd
     fill_in 'user_password_confirmation', with: passwd_confirm
-    fill_in 'user_shop_attributes_name', with: shop_name
+    fill_in 'user_shop_name', with: shop_name
     attach_file('user[avatar_attributes][image]',
                 avatar.respond_to?(:path) ? avatar.path : nil)
   end

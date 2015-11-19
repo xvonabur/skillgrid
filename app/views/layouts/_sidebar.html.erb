@@ -35,7 +35,7 @@
           <i class="fa fa-angle-left pull-right"></i>
         </a>
         <ul class="treeview-menu" id="sidebar-products-menu">
-          <% if !!current_user %>
+          <% if !!current_user && can?(:create, Product) %>
             <li class="<%= 'active' if current_page?(new_product_path) ||
               (controller.controller_name == 'products' &&
                 controller.action_name == 'create')  %>">

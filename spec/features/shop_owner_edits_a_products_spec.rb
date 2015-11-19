@@ -1,8 +1,8 @@
 require 'rails_helper'
 
-RSpec.feature 'User edits a product', type: :feature do
+RSpec.feature 'Shop owner edits a product', type: :feature do
   before do
-    user = create(:user)
+    user = create(:shop_owner)
     @product = create(:product)
     @product_with_no_photo = create(:product, photo: nil)
     visit new_user_session_path

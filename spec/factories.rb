@@ -5,7 +5,7 @@ FactoryGirl.define do
     password                'foobar1234'
     password_confirmation   'foobar1234'
 
-    factory :admin do
+    factory :admin, class: User do
       sequence(:name)         { |n| "Name# #{n}" }
       sequence(:last_name)    { |n| "Last name# #{n}" }
       birthday                I18n.t(20.years.ago.to_date)
@@ -16,15 +16,15 @@ FactoryGirl.define do
       guest                   false
     end
 
-    factory :shop_owner do
-      shop
+    factory :shop_owner, class: User do
+      sequence(:shop_name)    { |n| "Pretty good shop# #{n}" }
       avatar
       admin                   false
       shop_owner              true
       guest                   false
     end
 
-    factory :guest do
+    factory :guest, class: User do
       admin                   false
       shop_owner              false
       guest                   true
@@ -36,10 +36,7 @@ FactoryGirl.define do
     sequence(:description)   { |n| "This is the description for product# #{n}" }
     sequence(:price)         { |n| n * 1000 }
     photo
-  end
-
-  factory :shop do
-    sequence(:name)          { |n| "Pretty good shop# #{n}" }
+    association :user, factory: :shop_owner
   end
 
   factory :photo do

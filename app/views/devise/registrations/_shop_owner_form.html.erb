@@ -27,15 +27,13 @@
               field_icon_html: {
                 class: 'glyphicon glyphicon-log-in form-control-feedback'
               } %>
-  <%= f.simple_fields_for :shop, resource.build_shop do |sh| %>
-    <%= sh.input :name,
-                  placeholder:
-                    t('activerecord.attributes.user.shop'),
-                  required: true,
-                  field_icon_html: {
-                    class: 'glyphicon glyphicon-shopping-cart form-control-feedback'
-                    } %>
-  <% end %>
+  <%= f.input :shop_name,
+               placeholder:
+                 t('activerecord.attributes.user.shop_name'),
+               required: true,
+               field_icon_html: {
+                 class: 'glyphicon glyphicon-shopping-cart form-control-feedback'
+               } %>
   <%= f.simple_fields_for :avatar, resource.build_avatar do |ph| %>
     <%= ph.input :image, as: :file, required: true %>
   <% end %>

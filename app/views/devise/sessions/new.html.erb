@@ -10,13 +10,22 @@
     <div class="login-box-body">
       <p class="login-box-msg"><%= t('.sign_in') %></p>
       <%= simple_form_for(resource, as: resource_name,
-                          url: session_path(resource_name)) do |f| %>
+                          url: session_path(resource_name),
+                          wrapper: :auth_form) do |f| %>
         <%= f.error_notification %>
         <%= devise_error_messages! %>
         <%= f.input :email,
-                    class: 'form-control' %>
+                    placeholder: 'Email',
+                    required: true,
+                    field_icon_html: {
+                      class: 'glyphicon glyphicon-envelope form-control-feedback'
+                    } %>
         <%= f.input :password,
-                    class: 'form-control' %>
+                    placeholder: t('activerecord.attributes.user.password'),
+                    required: true,
+                    field_icon_html: {
+                      class: 'glyphicon glyphicon-lock form-control-feedback'
+                    } %>
         <div class="row">
           <div class="col-xs-8">
             <% if devise_mapping.rememberable? %>
